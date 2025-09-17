@@ -38,8 +38,8 @@ export function RecentForms() {
                 <h5 className="text-sm font-medium mb-1 text-center text-gray-400 truncate block w-[200px]">
                   Form {index + 1}
                 </h5>
-                {[0, 1, 2].map((item) => (
-                  <div key={item} className="flex items-center gap-1 mb-2">
+                {Array.from({ length: 3 }, (_, index) => (
+                  <div key={index} className="flex items-center gap-1 mb-2">
                     <Skeleton className="h-3 w-3 rounded-full shrink-0" />
                     <Skeleton className="h-[11px] w-[75px]" />
                   </div>
@@ -76,7 +76,7 @@ export function RecentForms() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-              <div className="flex w-full border-t border-gray-300 items-center justify-between py-1">
+              <div className="flex w-full border-t items-center justify-between py-1">
                 <div className="flex items-center gap-2">
                   <span className="text-muted-foreground flex items-center gap-1 font-[14px]">
                     {responses}
