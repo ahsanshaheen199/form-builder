@@ -1,13 +1,17 @@
 import {
+	BeforeInsert,
+	CreateDateColumn,
 	Column,
 	Entity,
 	JoinColumn,
 	ManyToOne,
 	OneToMany,
 	PrimaryColumn,
+	UpdateDateColumn,
 } from 'typeorm';
 import { User } from './user.entity';
 import { FormResponse } from './form-response.entity';
+import { ulid } from 'ulid';
 
 @Entity({ name: 'forms' })
 export class Form {
@@ -40,9 +44,14 @@ export class Form {
 	@OneToMany(() => FormResponse, (formResponse) => formResponse.form)
 	formResponses: FormResponse[];
 
-	@Column({ name: 'created_at' })
+	@CreateDateColumn({ name: 'created_at' })
 	createdAt: Date;
 
-	@Column({ name: 'updated_at' })
+	@UpdateDateColumn({ name: 'updated_at' })
 	updatedAt: Date;
+
+	@BeforeInsert()
+	async beforeInsert() {
+		this.id = ulid();
+	}
 }

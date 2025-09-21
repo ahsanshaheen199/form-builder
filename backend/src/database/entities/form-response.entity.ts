@@ -1,4 +1,12 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+	Column,
+	CreateDateColumn,
+	Entity,
+	JoinColumn,
+	ManyToOne,
+	PrimaryColumn,
+	UpdateDateColumn,
+} from 'typeorm';
 import { Form } from './form.entity';
 
 @Entity({ name: 'form_responses' })
@@ -20,9 +28,9 @@ export class FormResponse {
 	})
 	response?: string;
 
-	@Column({ name: 'created_at' })
+	@CreateDateColumn({ name: 'created_at' })
 	createdAt: Date;
 
-	@Column({ name: 'updated_at' })
+	@UpdateDateColumn({ name: 'updated_at' })
 	updatedAt: Date;
 }
